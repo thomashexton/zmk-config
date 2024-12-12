@@ -1,11 +1,11 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-config SHIELD_ERGONAUT_LEFT
+config SHIELD_ERGONAUT_ONE_LEFT
     def_bool $(shields_list_contains,ergonaut_ont_left)
 
-config SHIELD_ERGONAUT_RIGHT
+config SHIELD_ERGONAUT_ONE_RIGHT
     def_bool $(shields_list_contains,ergonaut_ont_right)
 
-config SHIELD_ERGONAUT_DONGLE
+config SHIELD_ERGONAUT_ONE_DONGLE
     def_bool $(shields_list_contains,ergonaut_ont_dongle)
