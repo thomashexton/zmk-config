@@ -17,9 +17,13 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
----
+
 include:
   - board: seeeduino_xiao_ble
-    shield: corne_left
+    shield: ergonaut_one_left
   - board: seeeduino_xiao_ble
-    shield: corne_right
+    shield: ergonaut_one_right
+  - board: seeeduino_xiao_ble
+    shield: ergonaut_one_dongle
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
