@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MIT
 
 config SHIELD_ERGONAUT_ONE_LEFT
-    def_bool $(shields_list_contains,ergonaut_ont_left)
+    def_bool $(shields_list_contains,ergonaut_one_left)
 
 config SHIELD_ERGONAUT_ONE_RIGHT
-    def_bool $(shields_list_contains,ergonaut_ont_right)
+    def_bool $(shields_list_contains,ergonaut_one_right)
 
 config SHIELD_ERGONAUT_ONE_DONGLE
-    def_bool $(shields_list_contains,ergonaut_ont_dongle)
+    def_bool $(shields_list_contains,ergonaut_one_dongle)
