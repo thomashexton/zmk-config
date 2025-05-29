@@ -107,6 +107,12 @@
     combos {
         compatible = "zmk,combos";
 
+        bt_reset {
+            bindings = <&bt BT_SEL 0>;
+            key-positions = <39 42>;
+            layers = <0>;
+        };
+
         caps_word {
             bindings = <&caps_word>;
             key-positions = <15 20>;
