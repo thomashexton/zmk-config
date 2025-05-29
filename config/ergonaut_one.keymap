@@ -107,12 +107,6 @@
     combos {
         compatible = "zmk,combos";
 
-        bt_reset {
-            bindings = <&bt BT_SEL 0>;
-            key-positions = <39 42>;
-            layers = <0>;
-        };
-
         caps_word {
             bindings = <&caps_word>;
             key-positions = <15 20>;
@@ -233,10 +227,10 @@
 
         adjust_layer {
             bindings = <
-&none  &none  &none  &none  &none  &bootloader    &bootloader    &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &sys_reset     &sys_reset     &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &studio_unlock &studio_unlock &none  &none  &none  &none  &none
-                     &none  &none  &none          &none          &none  &none
+&none  &none  &none        &none         &none       &bootloader  &bootloader  &none         &none         &none         &none  &none
+&none  &none  &none        &none         &none       &sys_reset   &sys_reset   &none         &none         &none         &none  &none
+&none  &none  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_NXT  &bt BT_CLR   &bt BT_CLR    &bt BT_NXT   &bt BT_SEL 1  &bt BT_SEL 0  &none  &none
+                           &none         &none       &none        &none        &none         &none
             >;
 
             label = "adj";
