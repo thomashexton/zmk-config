@@ -26,8 +26,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
         };
 
         hmr: homerow_mods_right {
@@ -36,8 +36,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
         };
 
         com_col: com_col {
@@ -200,10 +200,10 @@
 
         lower_layer {
             bindings = <
-&none   &kp ASTERISK   &kp N7             &kp N8             &kp N9     &kp KP_PLUS   &none      &kp POUND                     &kp ASTERISK              &kp CARET               &kp TILDE             &none
-&none   &kp KP_DIVIDE  &mt LS(LG(N4)) N4  &mt LG(LS(N5)) N5  &kp N6     &kp KP_MINUS  &none      &hmr RIGHT_CONTROL AMPERSAND  &hmr RIGHT_SHIFT AT_SIGN  &hmr RIGHT_ALT PERCENT  &hmr RIGHT_GUI GRAVE  &gpt_code
-&trans  &kp N0         &kp N1             &kp N2             &kp N3     &kp KP_DOT    &none      &kp PIPE                      &kp DOLLAR                &kp BACKSLASH           &kp SLASH             &none
-                                          &kp ESCAPE         &kp SPACE  &kp KP_EQUAL  &kp ENTER  &kp BACKSPACE                 &kp DELETE
+&none  &kp ASTERISK   &kp N7             &kp N8             &kp N9     &kp KP_PLUS   &none      &kp POUND                     &kp ASTERISK              &kp CARET               &kp TILDE             &none
+&none  &kp KP_DIVIDE  &mt LS(LG(N4)) N4  &mt LG(LS(N5)) N5  &kp N6     &kp KP_MINUS  &none      &hmr RIGHT_CONTROL AMPERSAND  &hmr RIGHT_SHIFT AT_SIGN  &hmr RIGHT_ALT PERCENT  &hmr RIGHT_GUI GRAVE  &none
+&none  &kp N0         &kp N1             &kp N2             &kp N3     &kp KP_DOT    &none      &kp PIPE                      &kp DOLLAR                &kp BACKSLASH           &kp SLASH             &none
+                                         &kp ESCAPE         &kp SPACE  &kp KP_EQUAL  &kp ENTER  &kp BACKSPACE                 &kp DELETE
             >;
 
             label = "lower";
@@ -211,10 +211,10 @@
 
         adjust_layer {
             bindings = <
-&none  &none  &none        &none         &none       &bootloader  &bootloader  &none         &none         &none         &none  &none
-&none  &none  &none        &none         &none       &sys_reset   &sys_reset   &none         &none         &none         &none  &none
-&none  &none  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_NXT  &bt BT_CLR   &bt BT_CLR   &bt BT_NXT    &bt BT_SEL 1  &bt BT_SEL 0  &none  &none
-                           &none         &none       &none        &none        &none         &none
+&bootloader     &none  &none        &none         &none         &none  &none  &none         &none         &none         &none  &bootloader
+&sys_reset      &none  &none        &none         &none         &none  &none  &none         &none         &none         &none  &sys_reset   
+&bt BT_CLR_ALL  &none  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2  &none  &none  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &none  &bt BT_CLR_ALL
+                                     &none        &none         &none  &none  &none         &none
             >;
             
             label = "adj";
