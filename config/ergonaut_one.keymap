@@ -171,6 +171,18 @@
             key-positions = <32 33>;
             layers = <0>;
         };
+
+        bootloader_combo_left {
+            bindings = <&bootloader>;
+            key-positions = <5 17 29>;
+            layers = <0>;
+        };
+
+        bootloader_combo_right {
+            bindings = <&bootloader>;
+            key-positions = <6 18 30>;
+            layers = <0>;
+        };
     };
     
     keymap {
