@@ -176,11 +176,33 @@
             bindings = <&bootloader>;
             key-positions = <5 17 29>;
             layers = <0>;
+            timeout-ms = <100>;
+            slow-release;
         };
 
         bootloader_combo_right {
             bindings = <&bootloader>;
             key-positions = <6 18 30>;
+            layers = <0>;
+            timeout-ms = <100>;
+            slow-release;
+        };
+
+        bootloader_simple_left {
+            bindings = <&bootloader>;
+            key-positions = <5 29>;
+            layers = <0>;
+        };
+
+        bootloader_simple_right {
+            bindings = <&bootloader>;
+            key-positions = <6 30>;
+            layers = <0>;
+        };
+
+        bt_clear_combo {
+            bindings = <&bt BT_CLR_ALL>;
+            key-positions = <12 23>;
             layers = <0>;
         };
     };
@@ -225,7 +247,7 @@
             bindings = <
 &bootloader     &none  &none        &none         &none         &none  &none  &none         &none         &none         &none  &bootloader
 &sys_reset      &none  &none        &none         &none         &none  &none  &none         &none         &none         &none  &sys_reset   
-&bt BT_CLR_ALL  &none  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2  &none  &none  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &none  &bt BT_CLR_ALL
+&bt BT_CLR_ALL  &none  &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2  &kp X  &kp X  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &none  &bt BT_CLR_ALL
                                      &none        &none         &none  &none  &none         &none
             >;
             
