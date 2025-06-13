@@ -1,0 +1,15 @@
+.build
+.direnv
+.venv
+.west
+modules
+firmware
+zephyr
+zmk
+zmk-helpers
+ergonautkb-zmk-module
+# Ignore keymap-drawer output
+draw/ergonaut_one.svg
+draw/ergonaut_one.yaml
+# Ignore system files
+.DS_Store 
