@@ -21,6 +21,15 @@ just build ergonaut
 just init
 ```
 
+## First Time Setup (Fresh Mac)
+
+1. **Install Nix**: 
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+2. **Restart your terminal**, then continue with Quick Start above.
+
 ## Development Workflow
 
 1. **Edit your keymap**: Modify `config/ergonaut_one.keymap`
