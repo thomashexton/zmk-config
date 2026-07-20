@@ -51,7 +51,13 @@ management. Hold the innermost Space and Backspace thumbs together to enter the
 symbol layer. There, the six outer keys clear the active host profile or select
 profiles 0 through 4.
 
-The regular bootloader combo is `Q + Quote`.
+Bootloader access is local to each half, even when the split link is down:
+
+- Left: hold the innermost Space thumb to activate Lower, then press `B`.
+- Right: hold the innermost Backspace thumb to activate Raise, then press `J`.
+
+These are layer bindings rather than combos because ZMK always evaluates combos
+on the central half.
 
 ### Optional USB dongle
 
