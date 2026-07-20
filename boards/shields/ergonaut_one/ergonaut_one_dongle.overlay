@@ -1,9 +1,15 @@
-#include "ergonaut_one.dtsi"
+#include "ergonaut_one_layout.dtsi"
 
-/* The dongle has no matrix; this keeps the shared 42-position transform
- * available for the keymap while all real key events arrive over split BLE. */
-&kscan0 {
-    col-gpios = <&xiao_d 0 GPIO_ACTIVE_HIGH>, <&xiao_d 1 GPIO_ACTIVE_HIGH>,
-                <&xiao_d 2 GPIO_ACTIVE_HIGH>, <&xiao_d 3 GPIO_ACTIVE_HIGH>,
-                <&xiao_d 4 GPIO_ACTIVE_HIGH>, <&xiao_d 5 GPIO_ACTIVE_HIGH>;
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zmk,physical-layout = &ergonaut_one_layout;
+    };
+
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
 };
