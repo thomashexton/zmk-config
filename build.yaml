@@ -19,11 +19,7 @@
 #
 
 include:
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: ergonaut_one_left
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: ergonaut_one_right
-  - board: seeeduino_xiao_ble
-    shield: ergonaut_one_dongle
-  - board: seeeduino_xiao_ble
-    shield: settings_reset

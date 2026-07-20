@@ -10,10 +10,11 @@ draw := absolute_path('draw')
 build expr *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
-    targets=$(yq -r '[.board, .shield] | join(",")' build.yaml | grep -i "${expr/#all/.*}")
+    filter={{ quote(expr) }}
+    targets=$(yq -r '.include[] | [.board, .shield] | @tsv' build.yaml | grep -i "${filter/#all/.*}")
     
     [[ -z $targets ]] && echo "No matching targets found. Aborting..." >&2 && exit 1
-    echo "$targets" | while IFS=, read -r board shield; do
+    echo "$targets" | while IFS=$'\t' read -r board shield; do
         artifact="${shield:+${shield// /+}-}${board}"
         build_dir="{{ build / '$artifact' }}"
         
@@ -40,8 +41,12 @@ clean-all: clean
 draw:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/ergonaut_one.keymap" >"{{ draw }}/ergonaut_one.yaml"
-    keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/ergonaut_one.yaml" -n "666+3 3+666" >"{{ draw }}/ergonaut_one.svg"
+    mkdir -p docs/keymaps
+    temp_dir=$(mktemp -d)
+    trap 'rm -rf "$temp_dir"' EXIT
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/ergonaut_one.keymap" >"$temp_dir/ergonaut_one.yaml"
+    keymap -c "{{ draw }}/config.yaml" draw "$temp_dir/ergonaut_one.yaml" \
+        -j "{{ draw }}/ergonaut_one.layout.json" -o "docs/keymaps/ergonaut_one.svg"
 
 # initialize west
 init:
@@ -55,4 +60,4 @@ update:
 
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
-    nix flake update --flake . 
+    nix flake update --flake .
