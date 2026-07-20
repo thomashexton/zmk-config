@@ -19,7 +19,7 @@
     devShells = forAllSystems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       zephyr = zephyr-nix.packages.${system};
-      keymap_drawer = pkgs.python3Packages.callPackage ./docs/keymaps { };
+      keymap_drawer = pkgs.python3Packages.callPackage ./docs { };
 
     in {
       default = pkgs.mkShell {

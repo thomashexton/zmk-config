@@ -4,7 +4,7 @@ default:
 config := absolute_path('config')
 build := absolute_path('.build')
 out := absolute_path('firmware')
-keymaps := absolute_path('docs/keymaps')
+docs := absolute_path('docs')
 
 # build firmware for matching targets
 build expr *west_args:
@@ -41,12 +41,12 @@ clean-all: clean
 draw:
     #!/usr/bin/env bash
     set -euo pipefail
-    mkdir -p docs/keymaps
+    mkdir -p "{{ docs }}"
     temp_dir=$(mktemp -d)
     trap 'rm -rf "$temp_dir"' EXIT
-    keymap -c "{{ keymaps }}/draw-config.yaml" parse -z "{{ config }}/ergonaut_one.keymap" >"$temp_dir/ergonaut_one.yaml"
-    keymap -c "{{ keymaps }}/draw-config.yaml" draw "$temp_dir/ergonaut_one.yaml" \
-        -j "{{ keymaps }}/ergonaut_one.layout.json" -o "{{ keymaps }}/ergonaut_one.svg"
+    keymap -c "{{ docs }}/draw-config.yaml" parse -z "{{ config }}/ergonaut_one.keymap" >"$temp_dir/ergonaut_one.yaml"
+    keymap -c "{{ docs }}/draw-config.yaml" draw "$temp_dir/ergonaut_one.yaml" \
+        -j "{{ docs }}/ergonaut_one.layout.json" -o "{{ docs }}/ergonaut_one.svg"
 
 # initialize west
 init:

@@ -33,7 +33,7 @@ just init
 ## Development Workflow
 
 1. **Edit your keymap**: Modify `config/ergonaut_one.keymap`
-2. **Generate visualization**: `just draw` → creates `docs/keymaps/ergonaut_one.svg`
+2. **Generate visualization**: `just draw` → creates `docs/ergonaut_one.svg`
 3. **Build firmware**: `just build ergonaut` → creates the left and right direct-Bluetooth firmware images
 4. **Flash to keyboard**: Copy `.uf2` file to your keyboard
 
@@ -63,7 +63,7 @@ That recovery image is intentionally not part of the everyday firmware output.
 ## Key Files
 
 - `config/ergonaut_one.keymap` - Your keymap configuration
-- `docs/keymaps/ergonaut_one.svg` - Generated keymap visualization
+- `docs/ergonaut_one.svg` - Generated keymap visualization
 - `flake.nix` - Nix development environment
 - `Justfile` - Available commands
 
@@ -74,4 +74,4 @@ That recovery image is intentionally not part of the everyday firmware output.
 
 ## Keymap Visualization
 
-The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. Its configuration, physical-layout input, and generated SVG all live under `docs/keymaps/` alongside the QMK diagrams.
+The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. Its configuration, physical-layout input, and generated SVG all live under `docs/`.
