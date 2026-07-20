@@ -29,6 +29,18 @@ build expr *west_args:
         fi
     done
 
+# Build the optional USB dongle and the left-half peripheral firmware.
+build-dongle:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    mkdir -p "{{ out }}"
+    west build -p always -s zmk/app -d "{{ build }}/ergonaut_one_dongle-xiao_ble" -b xiao_ble -- \
+        -DZMK_CONFIG="{{ config }}" -DSHIELD=ergonaut_one_dongle
+    cp "{{ build }}/ergonaut_one_dongle-xiao_ble/zephyr/zmk.uf2" "{{ out }}/ergonaut_one_dongle-xiao_ble.uf2"
+    west build -p always -s zmk/app -d "{{ build }}/ergonaut_one_left_dongle-xiao_ble" -b xiao_ble -- \
+        -DZMK_CONFIG="{{ config }}" -DSHIELD=ergonaut_one_left -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    cp "{{ build }}/ergonaut_one_left_dongle-xiao_ble/zephyr/zmk.uf2" "{{ out }}/ergonaut_one_left_dongle-xiao_ble.uf2"
+
 # clear build cache and artifacts
 clean:
     rm -rf {{ build }} {{ out }}

@@ -35,6 +35,7 @@ just init
 1. **Edit your keymap**: Modify `config/ergonaut_one.keymap`
 2. **Generate visualization**: `just draw` → creates `docs/ergonaut_one.svg`
 3. **Build firmware**: `just build ergonaut` → creates the left and right direct-Bluetooth firmware images
+   Run `just build-dongle` only when preparing the optional USB-dongle setup; it creates the dongle and left-peripheral images.
 4. **Flash to keyboard**: Copy `.uf2` file to your keyboard
 
 ## Firmware
@@ -48,6 +49,13 @@ symbol layer. There, the six outer keys clear the active host profile or select
 profiles 0 through 4.
 
 The regular bootloader combo is `Q + Quote`.
+
+### Optional USB dongle
+
+`just build-dongle` builds a USB-connected XIAO BLE central and a matching
+left-half peripheral. Flash the dongle image to the USB XIAO, then flash the
+left-peripheral and normal right-half images to the keyboard. Switching between
+direct Bluetooth and dongle mode requires resetting and re-pairing split bonds.
 
 ### Restore direct Bluetooth
 

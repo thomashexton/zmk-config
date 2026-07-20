@@ -7,6 +7,5 @@ firmware
 zephyr
 zmk
 zmk-helpers
-ergonautkb-zmk-module
 # Ignore system files
 .DS_Store

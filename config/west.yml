@@ -4,8 +4,6 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
-    - name: ergonautkb
-      url-base: https://github.com/ergonautkb
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -13,9 +11,6 @@ manifest:
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: main
-    - name: ergonautkb-zmk-module
-      remote: ergonautkb
       revision: main
   self:
     path: config
