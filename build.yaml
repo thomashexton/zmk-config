@@ -19,11 +19,15 @@
 #
 
 include:
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: ergonaut_one_left
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: ergonaut_one_right
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: ergonaut_one_dongle
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
+    shield: ergonaut_one_left
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: ergonaut_one_left_dongle
+  - board: xiao_ble
     shield: settings_reset

@@ -10,16 +10,17 @@ draw := absolute_path('draw')
 build expr *west_args:
     #!/usr/bin/env bash
     set -euo pipefail
-    targets=$(yq -r '[.board, .shield] | join(",")' build.yaml | grep -i "${expr/#all/.*}")
+    filter={{ quote(expr) }}
+    targets=$(yq -r '.include[] | [.board, (.shield // ""), (."cmake-args" // ""), (."artifact-name" // "")] | @tsv' build.yaml | grep -i "${filter/#all/.*}")
     
     [[ -z $targets ]] && echo "No matching targets found. Aborting..." >&2 && exit 1
-    echo "$targets" | while IFS=, read -r board shield; do
-        artifact="${shield:+${shield// /+}-}${board}"
+    echo "$targets" | while IFS=$'\t' read -r board shield cmake_args artifact_name; do
+        artifact="${artifact_name:-${shield:+${shield// /+}-}${board}}"
         build_dir="{{ build / '$artifact' }}"
         
         echo "Building firmware for $artifact..."
         west build -s zmk/app -d "$build_dir" -b $board {{ west_args }} -- \
-            -DZMK_CONFIG="{{ config }}" ${shield:+-DSHIELD="$shield"}
+            -DZMK_CONFIG="{{ config }}" ${shield:+-DSHIELD="$shield"} $cmake_args
         
         if [[ -f "$build_dir/zephyr/zmk.uf2" ]]; then
             mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.uf2" "{{ out }}/$artifact.uf2"
@@ -55,4 +56,4 @@ update:
 
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
-    nix flake update --flake . 
+    nix flake update --flake .
