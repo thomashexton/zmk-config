@@ -14,7 +14,7 @@ just --list
 # Generate keymap visualization
 just draw
 
-# Build firmware for your keyboard (builds direct and dongle variants)
+# Build firmware for both keyboard halves
 just build ergonaut
 
 # Initialize ZMK workspace (first time only)
@@ -33,34 +33,37 @@ just init
 ## Development Workflow
 
 1. **Edit your keymap**: Modify `config/ergonaut_one.keymap`
-2. **Generate visualization**: `just draw` → creates `draw/ergonaut_one.svg`
-3. **Build firmware**: `just build ergonaut` → creates direct-Bluetooth left/right firmware plus separate dongle firmware
+2. **Generate visualization**: `just draw` → creates `docs/keymaps/ergonaut_one.svg`
+3. **Build firmware**: `just build ergonaut` → creates the left and right direct-Bluetooth firmware images
 4. **Flash to keyboard**: Copy `.uf2` file to your keyboard
 
-## Firmware variants
+## Firmware
 
-- `ergonaut_one_left-xiao_ble.uf2`: left half as the central; use this without a dongle.
-- `ergonaut_one_right-xiao_ble.uf2`: right peripheral, used in either setup.
-- `ergonaut_one_left_dongle.uf2`: left half as a peripheral; use this with a dongle.
-- `ergonaut_one_dongle-xiao_ble.uf2`: dongle as the central.
+- `ergonaut_one_left-xiao_ble.uf2`: left half, the Bluetooth and USB central.
+- `ergonaut_one_right-xiao_ble.uf2`: right half, the wireless split peripheral.
 
-After changing between direct and dongle setups, flash `settings_reset-xiao_ble.uf2` to every part before flashing its normal firmware.
+The Oldman port keeps the Ergonaut's six extra outer-column keys for Bluetooth
+management. Hold the innermost Space and Backspace thumbs together to enter the
+symbol layer. There, the six outer keys clear the active host profile or select
+profiles 0 through 4.
 
-On the Adjust layer, the top outside keys clear the active Bluetooth host bond. The remaining top-row Bluetooth keys select host profiles 0–3; profile 4 is immediately below each bootloader key.
+The regular bootloader combo is `Q + Quote`.
 
 ### Restore direct Bluetooth
 
 1. Flash `ergonaut_one_left-xiao_ble.uf2` to the left half. A normal firmware flash preserves the existing split and host bonds.
 2. On the computer, forget any existing **Ergonaut One** Bluetooth device.
-3. Hold the left `Esc` and `Space` thumb keys together to activate Adjust, then tap the top-left outside key to clear the selected host profile.
+3. Hold the two innermost thumbs (Space and Backspace) to activate Symbol, then tap the top-left outside key to clear the selected host profile.
 4. Pair **Ergonaut One** from the computer's Bluetooth settings.
 
-If the two halves no longer connect, flash `settings_reset-xiao_ble.uf2` to both halves, then flash `ergonaut_one_right-xiao_ble.uf2` to the right and `ergonaut_one_left-xiao_ble.uf2` to the left. Power both halves on together so their internal split bond is recreated.
+If the two halves no longer connect, rebuild a ZMK `settings_reset` image when
+needed, flash it to both halves, then reflash the normal left and right images.
+That recovery image is intentionally not part of the everyday firmware output.
 
 ## Key Files
 
 - `config/ergonaut_one.keymap` - Your keymap configuration
-- `draw/ergonaut_one.svg` - Generated keymap visualization
+- `docs/keymaps/ergonaut_one.svg` - Generated keymap visualization
 - `flake.nix` - Nix development environment
 - `Justfile` - Available commands
 
@@ -71,4 +74,4 @@ If the two halves no longer connect, flash `settings_reset-xiao_ble.uf2` to both
 
 ## Keymap Visualization
 
-The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate SVG visualizations of your keymap. The output shows all layers, combos, and key bindings in a visual format.
+The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. `draw/` holds only its configuration and the Ergonaut physical-layout input; the generated SVG is kept under `docs/keymaps/` alongside the QMK diagrams.
