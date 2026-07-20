@@ -1,0 +1,4 @@
+name: ergonaut-one-config
+build:
+  settings:
+    board_root: ..

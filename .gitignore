@@ -5,6 +5,8 @@
 modules
 firmware
 zephyr
+!config/zephyr/
+!config/zephyr/module.yml
 zmk
 zmk-helpers
 # Ignore system files

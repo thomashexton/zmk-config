@@ -71,6 +71,7 @@ That recovery image is intentionally not part of the everyday firmware output.
 ## Key Files
 
 - `config/ergonaut_one.keymap` - Your keymap configuration
+- `boards/shields/ergonaut_one/` - Local Ergonaut shield and dongle hardware definition
 - `docs/ergonaut_one.svg` - Generated keymap visualization
 - `flake.nix` - Nix development environment
 - `Justfile` - Available commands
@@ -83,3 +84,7 @@ That recovery image is intentionally not part of the everyday firmware output.
 ## Keymap Visualization
 
 The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. Its configuration, physical-layout input, and generated SVG all live under `docs/`.
+
+The `config/zephyr/module.yml` file makes this repository's `boards/` directory
+a local Zephyr module board root, so the shield stays self-contained without an
+external Ergonaut module or ZMK's legacy `config/boards/` compatibility path.
