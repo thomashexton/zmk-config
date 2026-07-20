@@ -197,4 +197,3 @@
 
 ZMK_HOLD_TAP(lt_bspc, bindings = <&mo>, <&backspace_delete>;
              flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <175>;)
-

@@ -39,4 +39,4 @@ buildPythonApplication rec {
     description = "Parse QMK & ZMK keymaps and draw them as vector graphics";
     license = lib.licenses.mit;
   };
-} 
+}
