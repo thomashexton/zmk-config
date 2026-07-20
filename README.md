@@ -74,4 +74,4 @@ That recovery image is intentionally not part of the everyday firmware output.
 
 ## Keymap Visualization
 
-The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. `draw/` holds only its configuration and the Ergonaut physical-layout input; the generated SVG is kept under `docs/keymaps/` alongside the QMK diagrams.
+The `just draw` command uses [keymap-drawer](https://github.com/caksoylar/keymap-drawer) to generate the checked-in diagram. Its configuration, physical-layout input, and generated SVG all live under `docs/keymaps/` alongside the QMK diagrams.
