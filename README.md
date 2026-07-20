@@ -40,8 +40,11 @@ just init
 
 ## Firmware
 
-- `ergonaut_one_left-xiao_ble.uf2`: left half, the Bluetooth and USB central.
-- `ergonaut_one_right-xiao_ble.uf2`: right half, the wireless split peripheral.
+- `ergonaut_one_left-seeeduino_xiao_ble.uf2`: left half, the Bluetooth and USB central.
+- `ergonaut_one_right-seeeduino_xiao_ble.uf2`: right half, the wireless split peripheral.
+
+Both builds use ZMK's `seeeduino_xiao_ble` board target, which supplies the
+XIAO's flash-backed settings and battery configuration.
 
 The Oldman port keeps the Ergonaut's six extra outer-column keys for Bluetooth
 management. Hold the innermost Space and Backspace thumbs together to enter the
@@ -59,10 +62,11 @@ direct Bluetooth and dongle mode requires resetting and re-pairing split bonds.
 
 ### Restore direct Bluetooth
 
-1. Flash `ergonaut_one_left-xiao_ble.uf2` to the left half. A normal firmware flash preserves the existing split and host bonds.
+1. Flash `ergonaut_one_left-seeeduino_xiao_ble.uf2` to the left half. A normal firmware flash preserves the existing split and host bonds.
 2. On the computer, forget any existing **Ergonaut One** Bluetooth device.
-3. Hold the two innermost thumbs (Space and Backspace) to activate Symbol, then tap the top-left outside key to clear the selected host profile.
+3. Hold the two innermost thumbs (Space and Backspace) until Symbol activates. Tap the top-right outside key to select profile 0, then the top-left outside key to clear that profile.
 4. Pair **Ergonaut One** from the computer's Bluetooth settings.
+5. Leave the keyboard powered for at least 60 seconds so the new bond is written to flash.
 
 If the two halves no longer connect, rebuild a ZMK `settings_reset` image when
 needed, flash it to both halves, then reflash the normal left and right images.
